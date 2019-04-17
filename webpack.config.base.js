@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: 'production',
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'dist'),
@@ -15,25 +14,26 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
-                    presets: [
-                        '@babel/preset-env',
-                        '@babel/preset-react'
-                    ],
+                    presets: [['@babel/preset-env', {
+                        targets: {
+                            chrome: 68
+                        },
+                        useBuiltIns: 'entry'
+                    }], '@babel/preset-react'],
                     plugins: [
+                        'react-hot-loader/babel',
                         '@babel/plugin-proposal-class-properties'
                     ]
                 }
             },
             {
                 test: /\.css$/,
-                use: ['style-loader','css-loader'],
+                use: ['style-loader', 'css-loader'],
                 exclude: /node_modules/
             }
         ]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        })
-    ]
+    plugins: [new HtmlWebpackPlugin({
+        template: './src/index.html'
+    })]
 }
