@@ -1,47 +1,68 @@
 {
   "name": "react-boilerplate",
   "version": "0.1.0",
-  "description": "Tony testing using react",
+  "description": "This is a description of this file",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "dev": "webpack-dev-server --open --config webpack.config.dev.js",
     "dev:hot": "npm run dev -- --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "format": "pretty-quick",
+    "lint": "eslint ./"
   },
-  "author": "",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint && npm run test"
+    }
+  },
+  "author": "Tony Jay",
   "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.4",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.1.4",
+    "jest": "^23.6.0",
+    "jest-dom": "^2.1.1",
+    "prettier": "^1.15.2",
+    "pretty-quick": "^1.8.0",
+    "react-axe": "^3.0.2",
+    "react-testing-library": "^5.2.3",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.25.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "core-js": "^2.6.5",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-hot-loader": "^4.3.12"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tonyjay/egghead-react-boilerplate.git"
   },
-  "keywords": [],
   "bugs": {
     "url": "https://github.com/tonyjay/egghead-react-boilerplate/issues"
   },
-  "homepage": "https://github.com/tonyjay/egghead-react-boilerplate#readme",
-  "dependencies": {
-    "@babel/polyfill": "^7.4.3",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "core-js": "^3.0.1",
-    "css-loader": "^2.1.1",
-    "html-webpack-plugin": "^3.2.0",
-    "react-hot-loader": "^4.8.4",
-    "style-loader": "^0.23.1",
-    "webpack-bundle-analyzer": "^3.3.2",
-    "webpack-dev-server": "^3.3.1",
-    "webpack-merge": "^4.2.1"
-  }
+  "homepage": "https://github.com/tonyjay/egghead-react-boilerplate#readme"
 }
